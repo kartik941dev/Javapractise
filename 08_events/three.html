@@ -6,17 +6,65 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Chai aur Javascript</h1>
+    <h1>Kartik aur Javascript</h1>
     <button id="start">Start</button>
     <button id="stop">Stop</button>
-</body>
-<script>
-    const sayDate = function(str){
-        console.log(str, Date.now());
+
+    <script>
+    function sayDate() {
+        console.log("hi", Date.now());
     }
 
-    const intervalId = setInterval(sayDate, 1000, "hi")
+    let intervalId = null;
 
-    clearInterval(intervalId)
+    document.getElementById("start").onclick = function () {
+        if (intervalId === null) {   // 🔥 important check
+            intervalId = setInterval(sayDate, 1000);
+        }
+    };
+
+    document.getElementById("stop").onclick = function () {
+        clearInterval(intervalId);
+        intervalId = null;  // reset
+    };
 </script>
+</body>
 </html>
+
+
+
+<!-- PROJECT 
+// generating a random colour
+
+const randomColor = function () {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+let intervalId;
+
+const startChangingColor = function () {
+  if (!intervalId) {
+    intervalId = setInterval(changeBgColor, 1000);
+  }
+
+  function changeBgColor() {
+    document.body.style.backgroundColor = randomColor();
+  }
+};
+
+const stopChangingColor = function () {
+  clearInterval(intervalId);
+  intervalId = null;
+};
+
+document.querySelector('#start').addEventListener('click', startChangingColor);
+
+document.querySelector('#stop').addEventListener('click', stopChangingColor); 
+
+
+-->
