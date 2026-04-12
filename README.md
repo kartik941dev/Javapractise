@@ -1,2 +1,2 @@
 # Javapractise
-a code repo for javascript series at Chai aur code channel
+a code repo for javascript practise
